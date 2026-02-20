@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE 2026 - User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user-styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo-left">
+                <img src="src/gate-logo.png" alt="GATE 2026 Logo">
+            </div>
+            <div class="header-content">
+                <h1>GRADUATE APTITUDE TEST IN ENGINEERING 2026</h1>
+                <h2 class="hindi-title">अभियांत्रिकी स्नातक अभिक्षमता परीक्षा 2026</h2>
+                <p class="organizing-institute">Organizing Institute : INDIAN INSTITUTE OF TECHNOLOGY GUWAHATI</p>
+            </div>
+            <div class="logo-right">
+                <img src="src/iit-logo.png" alt="IIT Logo">
+            </div>
+        </header>
+
+        <!-- Top Navigation Bar -->
+        <div class="top-nav">
+            <div class="enrollment-info">
+                <span>Enrollment ID: G236D22</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="results.html">Logout</a>
+                <a href="#">Quick Links</a>
+            </div>
+        </div>
+
+        <!-- Welcome Bar -->
+        <div class="welcome-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span>Welcome, SHIVANSH SINGH</span>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-content">
+                <!-- Application Status Section -->
+                <div class="status-section">
+                    <div class="status-header">
+                        Application Status
+                    </div>
+                    <div class="status-content">
+                        <div class="info-table">
+                            <div class="info-row">
+                                <div class="info-label">Enrollment Id</div>
+                                <div class="info-value">G236D22</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Applicant Name</div>
+                                <div class="info-value">SHIVANSH SINGH</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Applicant Status</div>
+                                <div class="info-value">Results are now available</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section">
+                    <div class="download-header" id="downloadToggle">
+                        Application Form and Admit Card Download
+                        <span class="toggle-icon">^</span>
+                    </div>
+                    <div class="download-content" id="downloadContent">
+                        <a href="pdfs/application-form.pdf" class="btn-download btn-outline" download>
+                            DOWNLOAD APPLICATION FORM
+                        </a>
+                        <a href="pdfs/admit-card-cs.pdf" class="btn-download btn-filled" download>
+                            DOWNLOAD ADMIT CARD (CS)
+                        </a>
+                        <a href="pdfs/scorecard-cs.pdf" class="btn-download btn-filled" download>
+                            DOWNLOAD SCORECARD (CS)
+                        </a>
+                    </div>
+                    <div class="fingerprint" id="fingerprint">
+                        Digital FingerPrint: 9c654c79fc6e5460d8f7004467aac3e6
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Copyright © GATE 2026</p>
+        </footer>
+    </div>
+
+    <script src="user.js"></script>
+</body>
+</html>
