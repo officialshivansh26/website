@@ -141,51 +141,66 @@ function displayAuthError() {
     loginForm.insertBefore(errorDiv, loginForm.firstChild);
 }
 
+function showActionLoader(message) {
+    const actionLoader = document.getElementById('actionLoader');
+    const actionLoaderText = document.getElementById('actionLoaderText');
+    if (!actionLoader) return;
+    if (actionLoaderText && message) {
+        actionLoaderText.textContent = message;
+    }
+    actionLoader.classList.add('show');
+}
+
+function hideActionLoader() {
+    const actionLoader = document.getElementById('actionLoader');
+    if (!actionLoader) return;
+    actionLoader.classList.remove('show');
+}
+
 // Handle form submission
 function handleFormSubmit(event) {
     event.preventDefault();
-    
+
     const formData = new FormData(event.target);
     const validation = validateForm(formData);
-    
-    if (validation.isValid) {
-        // Clear any previous errors
-        document.querySelectorAll('.form-group').forEach(group => {
-            group.classList.remove('error');
-            const errorMsg = group.querySelector('.error-message');
-            if (errorMsg) {
-                errorMsg.remove();
+    const actionDelay = 500 + Math.floor(Math.random() * 700);
+
+    showActionLoader('Verifying details...');
+
+    setTimeout(function() {
+        if (validation.isValid) {
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+                const errorMsg = group.querySelector('.error-message');
+                if (errorMsg) {
+                    errorMsg.remove();
+                }
+            });
+
+            const existingError = document.querySelector('.auth-error-message');
+            if (existingError) {
+                existingError.remove();
             }
-        });
-        
-        // Remove any existing auth error
-        const existingError = document.querySelector('.auth-error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-        
-        // Check credentials
-        const enrollmentId = formData.get('enrollmentId');
-        const password = formData.get('password');
-        
-        if (enrollmentId === 'G236D22' && password === 'Shivansh123#') {
-            // Credentials are correct - redirect to user page
-            console.log('Login successful!');
-            window.location.href = 'user.html';
+
+            const enrollmentId = formData.get('enrollmentId');
+            const password = formData.get('password');
+
+            if (enrollmentId === 'G236D22' && password === 'Shivansh123#') {
+                window.location.href = 'user.html';
+            } else {
+                hideActionLoader();
+                displayAuthError();
+                refreshCaptcha();
+            }
         } else {
-            // Credentials are incorrect
-            displayAuthError();
-            refreshCaptcha();
+            hideActionLoader();
+            displayErrors(validation.errors);
+
+            if (validation.errors.captchaAnswer) {
+                refreshCaptcha();
+            }
         }
-    } else {
-        // Display validation errors
-        displayErrors(validation.errors);
-        
-        // Refresh CAPTCHA if it was wrong
-        if (validation.errors.captchaAnswer) {
-            refreshCaptcha();
-        }
-    }
+    }, actionDelay);
 }
 
 // Initialize on page load
