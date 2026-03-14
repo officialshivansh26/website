@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="user-styles.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="pageLoader">
+        <div class="loader-logo">
+            <img src="src/gate-logo.png" alt="GATE 2026">
+            <span class="loader-title">GATE 2026 Portal</span>
+        </div>
+        <div class="loader-spinner"></div>
+        <span class="loader-msg">Fetching your results, please wait&hellip;</span>
+    </div>
+    <script>
+        // Random delay between 2.0s – 3.2s — slightly longer on results page
+        var _loaderDelay = 2000 + Math.floor(Math.random() * 1200);
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('pageLoader');
+                loader.classList.add('fade-out');
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }, _loaderDelay);
+        });
+    </script>
     <div class="container">
         <!-- Header Section -->
         <header class="header">
@@ -83,9 +103,9 @@
                         <a href="pdfs/admit-card-cs.pdf" class="btn-download btn-filled" target="_blank" rel="noopener noreferrer">
                             DOWNLOAD ADMIT CARD (CS)
                         </a>
-                        <a href="pdfs/scorecard-cs.pdf" class="btn-download btn-filled" target="_blank" rel="noopener noreferrer">
-                            DOWNLOAD SCORECARD (CS)
-                        </a>
+                        <button class="btn-download btn-filled" id="viewResultBtn">
+                            VIEW RESULT (CS)
+                        </button>
                     </div>
                     <div class="fingerprint" id="fingerprint">
                         Digital FingerPrint: 9c654c79fc6e5460d8f7004467aac3e6
@@ -98,6 +118,98 @@
         <footer class="footer">
             <p>Copyright © GATE 2026</p>
         </footer>
+    </div>
+
+    <!-- Result Modal -->
+    <div class="modal-overlay" id="resultModal">
+        <div class="modal-box">
+            <h2 class="modal-title">Your GATE 2026 Result [CS]</h2>
+            <hr class="modal-divider">
+
+            <div class="modal-body">
+                <!-- Left: Fields -->
+                <div class="modal-fields">
+                    <div class="modal-field-group">
+                        <label>Name</label>
+                        <div class="modal-field-value">SHIVANSH SINGH</div>
+                    </div>
+                    <div class="modal-field-group">
+                        <label>Registration Number</label>
+                        <div class="modal-field-value">CS26S41304279</div>
+                    </div>
+                    <div class="modal-field-group">
+                        <label>Gender</label>
+                        <div class="modal-field-value">Male</div>
+                    </div>
+                    <div class="modal-field-group">
+                        <label>Parent's/Guardian's name</label>
+                        <div class="modal-field-value">A P SINGH</div>
+                    </div>
+                    <div class="modal-field-group">
+                        <label>Date of Birth (YYYY-MM-DD)</label>
+                        <div class="modal-field-value">2004-02-20</div>
+                    </div>
+                    <div class="modal-field-group">
+                        <label>Test Paper</label>
+                        <div class="modal-field-value">CS : Computer Science and Information Technology</div>
+                    </div>
+
+                    <!-- Scores Row -->
+                    <div class="modal-scores">
+                        <div class="modal-score-item">
+                            <span class="score-label">Marks out of 100<sup>#</sup></span>
+                            <div class="modal-field-value score-box">71.67</div>
+                        </div>
+                        <div class="modal-score-item">
+                            <span class="score-label">All India Rank in this test paper</span>
+                            <div class="modal-field-value score-box">426</div>
+                        </div>
+                    </div>
+
+                    <!-- Qualifying Marks Row -->
+                    <div class="modal-scores">
+                        <div class="modal-score-item">
+                            <span class="score-label">Qualifying Marks<sup>##</sup></span>
+                            <div class="modal-qualifying">
+                                <div class="qual-box">
+                                    <div class="modal-field-value score-box">30.3</div>
+                                    <span class="qual-label">General</span>
+                                </div>
+                                <div class="qual-box">
+                                    <div class="modal-field-value score-box">27.4</div>
+                                    <span class="qual-label">OBC-NCL/EWS</span>
+                                </div>
+                                <div class="qual-box">
+                                    <div class="modal-field-value score-box">20.9</div>
+                                    <span class="qual-label">SC/ST/PwD</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-score-item">
+                            <span class="score-label">GATE Score</span>
+                            <div class="modal-field-value score-box">788</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Photo & Signature -->
+                <div class="modal-photo-col">
+                    <div class="modal-photo-box">
+                        <img src="src/photo.jpg" alt="Photograph" onerror="this.style.background='#d0d0d0';this.removeAttribute('src')">
+                        <span>Photograph</span>
+                    </div>
+                    <div class="modal-photo-box">
+                        <img src="src/signature.jpg" alt="Signature" class="signature-img" onerror="this.style.background='#e8e4f3';this.removeAttribute('src')">
+                        <span>Signature</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-divider modal-divider-bottom">
+            <div class="modal-footer">
+                <button class="modal-close-btn" id="closeResultModal">CLOSE</button>
+            </div>
+        </div>
     </div>
 
     <script src="user.js"></script>

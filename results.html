@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="pageLoader">
+        <div class="loader-logo">
+            <img src="src/gate-logo.png" alt="GATE 2026">
+            <span class="loader-title">GATE 2026 Portal</span>
+        </div>
+        <div class="loader-spinner"></div>
+        <span class="loader-msg">Please wait, connecting to server&hellip;</span>
+    </div>
+    <script>
+        // Random delay between 1.8s – 2.8s for natural feel
+        var _loaderDelay = 1800 + Math.floor(Math.random() * 1000);
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('pageLoader');
+                loader.classList.add('fade-out');
+                setTimeout(function() { loader.style.display = 'none'; }, 500);
+            }, _loaderDelay);
+        });
+    </script>
     <div class="container">
         <!-- Header Section -->
         <header class="header">
