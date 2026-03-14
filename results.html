@@ -17,8 +17,10 @@
         <span class="loader-msg">Please wait, connecting to server&hellip;</span>
     </div>
     <script>
-        // Random delay between 1.8s – 2.8s for natural feel
-        var _loaderDelay = 1800 + Math.floor(Math.random() * 1000);
+        // Random delay between 1.8s – 3.0s on every load
+        var _loaderMin = 1800;
+        var _loaderMax = 3000;
+        var _loaderDelay = Math.floor(Math.random() * (_loaderMax - _loaderMin + 1)) + _loaderMin;
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var loader = document.getElementById('pageLoader');

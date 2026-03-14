@@ -18,8 +18,10 @@
         <span class="loader-msg">Fetching your results, please wait&hellip;</span>
     </div>
     <script>
-        // Random delay between 2.0s – 3.2s — slightly longer on results page
-        var _loaderDelay = 2000 + Math.floor(Math.random() * 1200);
+        // Random delay between 2.2s – 3.6s on every load
+        var _loaderMin = 2200;
+        var _loaderMax = 3600;
+        var _loaderDelay = Math.floor(Math.random() * (_loaderMax - _loaderMin + 1)) + _loaderMin;
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var loader = document.getElementById('pageLoader');
