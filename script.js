@@ -141,22 +141,6 @@ function displayAuthError() {
     loginForm.insertBefore(errorDiv, loginForm.firstChild);
 }
 
-function showActionLoader(message) {
-    const actionLoader = document.getElementById('actionLoader');
-    const actionLoaderText = document.getElementById('actionLoaderText');
-    if (!actionLoader) return;
-    if (actionLoaderText && message) {
-        actionLoaderText.textContent = message;
-    }
-    actionLoader.classList.add('show');
-}
-
-function hideActionLoader() {
-    const actionLoader = document.getElementById('actionLoader');
-    if (!actionLoader) return;
-    actionLoader.classList.remove('show');
-}
-
 // Handle form submission
 function handleFormSubmit(event) {
     event.preventDefault();
@@ -164,8 +148,6 @@ function handleFormSubmit(event) {
     const formData = new FormData(event.target);
     const validation = validateForm(formData);
     const actionDelay = 500 + Math.floor(Math.random() * 700);
-
-    showActionLoader('Verifying details...');
 
     setTimeout(function() {
         if (validation.isValid) {
@@ -188,12 +170,10 @@ function handleFormSubmit(event) {
             if (enrollmentId === 'G236D22' && password === 'Shivansh123#') {
                 window.location.href = 'user.html';
             } else {
-                hideActionLoader();
                 displayAuthError();
                 refreshCaptcha();
             }
         } else {
-            hideActionLoader();
             displayErrors(validation.errors);
 
             if (validation.errors.captchaAnswer) {

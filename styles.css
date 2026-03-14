@@ -60,53 +60,6 @@
 
 /* ── Page Loader ─────────────────────────────────── */
 
-/* ── Action Loader (Button Clicks) ───────────────── */
-#actionLoader {
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
-    background: rgba(255, 255, 255, 0.76);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.22s ease;
-}
-
-#actionLoader.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.action-loader-box {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
-    border: 1px solid #e0d4f0;
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0 3px 10px rgba(123,67,151,0.14);
-}
-
-.action-loader-spinner {
-    width: 20px;
-    height: 20px;
-    border: 3px solid #e0d4f0;
-    border-top-color: #7b4397;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-}
-
-#actionLoaderText {
-    font-size: 13px;
-    color: #6f6f6f;
-    font-weight: 400;
-}
-
-/* ── Action Loader (Button Clicks) ───────────────── */
-
 * {
     margin: 0;
     padding: 0;

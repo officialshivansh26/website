@@ -1,21 +1,5 @@
 // User Dashboard JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    const actionLoader = document.getElementById('actionLoader');
-    const actionLoaderText = document.getElementById('actionLoaderText');
-
-    function showActionLoader(message) {
-        if (!actionLoader) return;
-        if (actionLoaderText && message) {
-            actionLoaderText.textContent = message;
-        }
-        actionLoader.classList.add('show');
-    }
-
-    function hideActionLoader() {
-        if (!actionLoader) return;
-        actionLoader.classList.remove('show');
-    }
-
     function getActionDelay(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -47,9 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalBtn = document.getElementById('closeResultModal');
 
     viewResultBtn.addEventListener('click', function() {
-        showActionLoader('Opening result...');
         setTimeout(function() {
-            hideActionLoader();
             resultModal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }, getActionDelay(450, 900));
@@ -59,10 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetUrl = link.getAttribute('href');
-            showActionLoader('Preparing document...');
 
             setTimeout(function() {
-                hideActionLoader();
                 window.open(targetUrl, '_blank', 'noopener,noreferrer');
             }, getActionDelay(400, 850));
         });
